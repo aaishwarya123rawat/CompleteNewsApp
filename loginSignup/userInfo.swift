@@ -13,6 +13,8 @@ struct User: Codable {
     let emailSignUp:String
     let passwordSignUp:String
     let nameSignUp:String
+//    let selectedSource:String
+    
 //    let isLoggedIn:Bool
 //    let ageSignUp:String
 }

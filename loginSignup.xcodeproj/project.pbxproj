@@ -19,7 +19,7 @@
 		184FC5AD21AE809F003F2D7C /* LeftViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FC5AC21AE809F003F2D7C /* LeftViewControllerCell.swift */; };
 		18824924217DE6F7000E4003 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824923217DE6F7000E4003 /* HomeViewController.swift */; };
 		18CE397F21804BCA0011EE41 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE397E21804BCA0011EE41 /* loginViewController.swift */; };
-		18CE39812180980A0011EE41 /* DataSve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE39802180980A0011EE41 /* DataSve.swift */; };
+		18CE39812180980A0011EE41 /* DataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE39802180980A0011EE41 /* DataSave.swift */; };
 		18CE398321809A740011EE41 /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE398221809A740011EE41 /* userInfo.swift */; };
 		18CE39862181DC360011EE41 /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */; };
 		18CE398821834AFD0011EE41 /* DetailNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE398721834AFD0011EE41 /* DetailNewsViewController.swift */; };
@@ -41,7 +41,7 @@
 		184FC5AC21AE809F003F2D7C /* LeftViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewControllerCell.swift; sourceTree = "<group>"; };
 		18824923217DE6F7000E4003 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18CE397E21804BCA0011EE41 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
-		18CE39802180980A0011EE41 /* DataSve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSve.swift; sourceTree = "<group>"; };
+		18CE39802180980A0011EE41 /* DataSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSave.swift; sourceTree = "<group>"; };
 		18CE398221809A740011EE41 /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCollectionViewCell.swift; sourceTree = "<group>"; };
 		18CE398721834AFD0011EE41 /* DetailNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 				182786D9219AA06900B6D56E /* CollectionCellLayout.swift */,
 				181B88E42186F9510002329F /* DetailViewCellTableViewCell.swift */,
 				18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */,
-				18CE39802180980A0011EE41 /* DataSve.swift */,
+				18CE39802180980A0011EE41 /* DataSave.swift */,
 				18CE398221809A740011EE41 /* userInfo.swift */,
 				180411A22178A772001C5F0E /* Main.storyboard */,
 				184FC5A421AD3711003F2D7C /* LeftMenuViewController.swift */,
@@ -251,7 +251,7 @@
 				1804119F2178A772001C5F0E /* AppDelegate.swift in Sources */,
 				18824924217DE6F7000E4003 /* HomeViewController.swift in Sources */,
 				184FC5AD21AE809F003F2D7C /* LeftViewControllerCell.swift in Sources */,
-				18CE39812180980A0011EE41 /* DataSve.swift in Sources */,
+				18CE39812180980A0011EE41 /* DataSave.swift in Sources */,
 				18CE397F21804BCA0011EE41 /* loginViewController.swift in Sources */,
 				181B88E52186F9510002329F /* DetailViewCellTableViewCell.swift in Sources */,
 				18CE39862181DC360011EE41 /* CellCollectionViewCell.swift in Sources */,

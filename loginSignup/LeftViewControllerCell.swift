@@ -12,7 +12,6 @@ class LeftViewControllerCell: UITableViewCell {
 
     
     @IBOutlet var leftControllerCell: UIView!
-    
     @IBOutlet var leftControllerLable: UILabel!
     @IBOutlet var leftControllerImg: UIImageView!
     

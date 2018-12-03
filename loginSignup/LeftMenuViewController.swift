@@ -9,9 +9,11 @@
 import UIKit
 
 enum LeftMenu: Int {
-    case prefrence = 0
+    case home = 0
+    case prefrence
     case resetPassword
     case logout
+ 
 }
 
 protocol LeftMenuProtocol : class {
@@ -28,33 +30,44 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     var mainViewController: UIViewController!
     var logingViewController: UIViewController!
-    var menus = ["Prefrence","ResetPassword", "Logout" ]
-    var images = ["preference", "changpassword", "logout" ]
+    var homeViewController: UIViewController!
+    
+    
+    var menus = ["Home","Prefrence","ResetPassword", "Logout" ]
+    var images = ["home","preference", "changpassword", "logout" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 60
         self.tableView.tableFooterView = UIView()
         newsIconImg.layer.cornerRadius = newsIconImg.frame.size.width/2
-        
-        
+
     }
 
     
     func selectMenuItems(_ menu: LeftMenu) {
         switch menu {
+        case .home:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.homeViewController = storyboard.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
+            self.homeViewController = UINavigationController(rootViewController: homeViewController)
+            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
+            
         case .prefrence:
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.mainViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.mainViewController = UINavigationController(rootViewController: mainViewController)
         self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
             
         case .resetPassword: break
-//
 
         case .logout:
+            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+            
             let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
             let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDel.window?.rootViewController = loginVC
-            UserDefaults.standard.set(false, forKey: "isLoggedIn")
- 
+            appDel.window?.rootViewController = loginVC  
         }
     }
     

@@ -114,26 +114,31 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func signUpUser(_ sender: Any) {
+        
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         self.navigationController?.pushViewController(vc, animated: true)
-        
+         
     }
     
 
     
     @IBAction func userLogin(_ sender: Any) {
+        
+        let logedInState = UserDefaults.standard.bool(forKey: "isLoggedIn")
+        print("logedInState:\(logedInState)")
+
         let email = userEmail.text
         let password = userPassword.text
-        
         let userDetail = fetchData.getData()
         for loadedPerson in userDetail{
-            if( email == loadedPerson.emailSignUp) && (password == loadedPerson.passwordSignUp){
+            if( email == loadedPerson.emailSignUp) && (password == loadedPerson.passwordSignUp) && (logedInState == true){
                 print("login")
+                print("UserName=\(loadedPerson.nameSignUp)")
                 
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
 //                UserDefaults.standard.synchronize()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
                 let mainViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuViewController") as! LeftMenuViewController
 
@@ -148,15 +153,31 @@ class LoginViewController: UIViewController {
                 self.view.window?.rootViewController = slideMenuController
                 self.view.window?.makeKeyAndVisible()
 
-                
-//                let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-//                let navController = UINavigationController(rootViewController: VC1)
-////              self.present(navController, animated:true, completion: nil)
-//                self.view.window!.rootViewController = navController
                 break
             }
-            
-            else{
+            else if ( email == loadedPerson.emailSignUp) && (password == loadedPerson.passwordSignUp) && (logedInState == false){
+                print("login:abcd")
+                UserDefaults.standard.set(true, forKey: "isLoggedIn")
+//                print("loadedPerson:\(loadedPerson)")
+//                UserDefaults.standard.set(loadedPerson, forKey: "user")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeViewController = storyboard.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
+                let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuViewController") as! LeftMenuViewController
+                
+                let nvc: UINavigationController = UINavigationController(rootViewController: homeViewController)
+                
+                leftViewController.homeViewController = nvc
+                
+                let slideMenuController =  SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+                
+                slideMenuController.delegate = homeViewController as? SlideMenuControllerDelegate
+                
+                self.view.window?.rootViewController = slideMenuController
+                self.view.window?.makeKeyAndVisible()
+                break
+            }
+        }
+        
                 let alert = UIAlertController(title: "Alert", message: "Please fill the details", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                     switch action.style{
@@ -174,8 +195,6 @@ class LoginViewController: UIViewController {
                 print("wrongDetail")
             
             }
-            
-        }
     }
-}
+
 

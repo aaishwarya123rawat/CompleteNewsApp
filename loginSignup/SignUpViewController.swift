@@ -103,11 +103,9 @@ class SignUpViewController: UIViewController {
             let email = emailSignUp.text!
             let password = passwordSignUp.text!
                 _ = confirmPasswordSignUp.text!
-//            let age = ageSignUp.text!
+//            let age = ageSignUp.text
                 DataSave().saveData(user: User(emailSignUp: email, passwordSignUp: password, nameSignUp: username))
-                UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                
-                let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 let navController = UINavigationController(rootViewController: VC1)
                 self.present(navController, animated:true, completion: nil)
                 

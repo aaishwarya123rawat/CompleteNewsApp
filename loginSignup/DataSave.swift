@@ -10,19 +10,28 @@ import Foundation
 
 class DataSave {
     
+    
     func saveData(user: User) {
         let users = [user]
         let encoder = JSONEncoder()
         var userlist = getData()
         userlist.append(contentsOf: users)
         if let encoded = try? encoder.encode(userlist) {
-            UserDefaults.standard.set(encoded, forKey: "savedUsers")
-//            UserDefaults.standard.set(true, forKey: "isLoggedin")
+        UserDefaults.standard.set(encoded, forKey: "savedUsers")
             print("encoded:\(encoded)")
             print("users:\(userlist)")
-            
         }
     }
+    
+    
+    
+
+//    func updateUserInfoWithSource(){
+//       let selectedUser = selecteSource.sourceIDs
+//        print("selectedUser\(selectedUser)")
+//
+//    }
+    
     
      func getData() -> [User]  {
         let defaults = UserDefaults.standard

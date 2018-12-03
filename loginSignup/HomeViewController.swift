@@ -13,9 +13,9 @@ import SlideMenuControllerSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
+  
     var sources:Sources?
     var source:[Source] = []
-//    var isSelectedSource:Bool = false
     var allSelectedSource:[String] = []
     var index = [Int]()
  
@@ -28,7 +28,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     struct Sources: Decodable {
         var status:String?
         var sources: [Source]?
-        
     }
     
     struct Source: Decodable {
@@ -49,16 +48,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             case category
         }
     }
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         collectionCellLayout = CollectionCellLayout(numberOfColumn: 3)
         collectionView.collectionViewLayout =  collectionCellLayout
         collectionView.reloadData()
         loadSources()
-        
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,8 +64,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu")!)
-//        self.slideMenuController()?.addLeftGestures()
-//        self.slideMenuController()?.removeLeftGestures()
     }
     
     
@@ -119,9 +113,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return UIColor.white
     }
-    
-
-    
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
@@ -138,39 +129,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailNewsViewController") as!                              DetailNewsViewController
         
         for selectedSource in source {
-          
-//            let toCheckAnyTrue = selectedSource.isSelectedSource
             if  selectedSource.isSelectedSource == true {
                 allSelectedSource.append(selectedSource.id)
-                
-                vc.sourceIDs = allSelectedSource
-                print(" vc.sourceIDs: \( vc.sourceIDs)")
-                self.navigationController?.pushViewController(vc, animated: true)
-                break
             }
-//                else {
-//                let alert = UIAlertController(title: "Alert", message: "Please Select Source", preferredStyle: UIAlertController.Style.alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-//                    switch action.style{
-//                    case .default:
-//                        print("default")
-//
-//                    case .cancel:
-//                        print("cancel")
-//
-//                    case .destructive:
-//                        print("destructive")
-//                    }}))
-//
-//                self.present(alert, animated: true, completion: nil)
-//
-//            }
-    }
-    
-//        vc.sourceIDs = allSelectedSource
-//        print(" vc.sourceIDs: \( vc.sourceIDs)")
-//        self.navigationController?.pushViewController(vc, animated: true)
-        
+        }
+        vc.sourceIDs = allSelectedSource
+        print(" vc.sourceIDs: \( vc.sourceIDs)")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

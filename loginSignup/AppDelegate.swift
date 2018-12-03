@@ -22,17 +22,17 @@ import SlideMenuControllerSwift
         let navController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController") as! UINavigationController
           appDelegate?.window?.rootViewController = navController
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
         let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuViewController") as! LeftMenuViewController
 
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        let nvc: UINavigationController = UINavigationController(rootViewController: homeViewController)
         
         UINavigationBar.appearance().tintColor = UIColor(red: 104/250.0, green: 159/250.0, blue: 56/250.0, alpha: 1.0)
-        leftViewController.mainViewController = nvc
+        leftViewController.homeViewController = nvc
         
-        let slideController = SlideMenuController(mainViewController: navController, leftMenuViewController: leftViewController)
-        slideController.automaticallyAdjustsScrollViewInsets = true
-        slideController.delegate = mainViewController
+        let slideController = SlideMenuController(mainViewController: nvc, leftMenuViewController: leftViewController)
+//        slideController.automaticallyAdjustsScrollViewInsets = true
+        slideController.delegate = homeViewController as? SlideMenuControllerDelegate
         self.window?.rootViewController = slideController
         self.window?.makeKeyAndVisible()
     }
@@ -45,14 +45,16 @@ import SlideMenuControllerSwift
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         if (logedInState == true) {
-
+           let userDetails = UserDefaults.standard.data(forKey: "user")
+            print("userDetails:\(String(describing: userDetails))")
             self.createMenuView()
-        } else {
+        }
+        else{
             let loginController =  storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
             appDelegate?.window?.rootViewController = loginController
             //self.createMenuView()
         }
-        
+   
     
         return true
     }

@@ -8,16 +8,17 @@
 
 import UIKit
 import Alamofire
+import SlideMenuControllerSwift
 
 class DetailNewsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     @IBOutlet weak var tableView: UITableView!
 
+
     var news:News?
     var article:[ArticleDes] = []
     var sourceID:String = ""
     var sourceIDs:[String] = []
-    var onlySectedSource:Bool = false
     
     struct News: Decodable {
         let status: String?
@@ -44,9 +45,9 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
             self.tableView.rowHeight = 300
+//    navigationController?.navigationBar.prefersLargeTitles = true
+        self.addLeftBarButtonWithImage(UIImage(named: "ic_menu")!)
         
-//            navigationController?.navigationBar.prefersLargeTitles = true
-//            self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,16 +63,9 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell") as! DetailViewCellTableViewCell
         let articleDescription = article[indexPath.row]
-//        cell.layer.borderWidth = 1.0
-//        cell.layer.borderColor = UIColor.gray.cgColor
-        
-//        cell.layer.cornerRadius = 5
         cell.title.text = articleDescription.title
-//        cell.titledescription.text = articleDescription.content
-//        cell.author.text = articleDescription.author
         cell.titleImage.downloadImage(from: ((articleDescription.urlToImage ?? "")))
         cell.titleImage.layer.cornerRadius = 10.0
-        
         cell.backgroundCardView.backgroundColor = UIColor.white
         cell.backgroundColor = UIColor(red: 238/250.0, green: 238/250.0, blue: 238/250.0, alpha: 1.0)
         cell.backgroundCardView.layer.cornerRadius = 5.0

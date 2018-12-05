@@ -24,8 +24,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
         setLeftSIDEImage(TextField: emailSignUp, ImageName: "email-1")
@@ -103,12 +101,13 @@ class SignUpViewController: UIViewController {
             let email = emailSignUp.text!
             let password = passwordSignUp.text!
                 _ = confirmPasswordSignUp.text!
-//            let age = ageSignUp.text
-                DataSave().saveData(user: User(emailSignUp: email, passwordSignUp: password, nameSignUp: username))
+
+                DataSave().saveData(user: User(emailSignUp: email, passwordSignUp: password, nameSignUp: username, selectedSource: nil ))
                 let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 let navController = UINavigationController(rootViewController: VC1)
                 self.present(navController, animated:true, completion: nil)
-                
+                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+
         }
         else{
             let alert = UIAlertController(title: "Alert", message: "Please fill right details", preferredStyle: UIAlertController.Style.alert)

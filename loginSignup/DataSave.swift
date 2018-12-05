@@ -10,27 +10,40 @@ import Foundation
 
 class DataSave {
     
-    
-    func saveData(user: User) {
+    func saveData(user: User)   {
         let users = [user]
-        let encoder = JSONEncoder()
         var userlist = getData()
-        userlist.append(contentsOf: users)
-        if let encoded = try? encoder.encode(userlist) {
-        UserDefaults.standard.set(encoded, forKey: "savedUsers")
-            print("encoded:\(encoded)")
-            print("users:\(userlist)")
+        let encoder = JSONEncoder()
+        for oldUser in userlist{
+            if (user.emailSignUp == oldUser.emailSignUp){
+                
+                
+                
+                
+                let encoded = try? encoder.encode(users)
+                UserDefaults.standard.set(encoded, forKey: "savedUsers");
+                userlist.remove(at: 2)
+                UserDefaults.standard.synchronize()
+                break
+            }
+            else{
+                _ = userlist.append(contentsOf: users)
+                if let encoded = try? encoder.encode(userlist) {
+                    UserDefaults.standard.set(encoded, forKey: "savedUsers")
+                    print("encoded:\(encoded)")
+                    print("users:\(userlist)")
+                }
+            }
         }
     }
     
     
+    func saveSourceForSelectedUser(userSource: [String] ) {
+      var usr = UserData.shared.userInformation
+        usr?.selectedSource = userSource
+        saveData(user: (usr!))
+    }
     
-
-//    func updateUserInfoWithSource(){
-//       let selectedUser = selecteSource.sourceIDs
-//        print("selectedUser\(selectedUser)")
-//
-//    }
     
     
      func getData() -> [User]  {

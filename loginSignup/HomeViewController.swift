@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var source:[Source] = []
     var allSelectedSource:[String] = []
     var index = [Int]()
+    var saveData = DataSave()
  
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,7 +35,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         var id:String
         var name:String?
         var description:String?
-         var url:String?
+        var url:String?
         var country:String?
         var category:String?
         var isSelectedSource:Bool = false
@@ -127,14 +128,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func nextPageWithSelectedSource(_ sender: Any) {
 
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailNewsViewController") as!                              DetailNewsViewController
-        
         for selectedSource in source {
             if  selectedSource.isSelectedSource == true {
                 allSelectedSource.append(selectedSource.id)
             }
+            
         }
+        DataSave().saveSourceForSelectedUser(userSource: allSelectedSource)
         vc.sourceIDs = allSelectedSource
-        print(" vc.sourceIDs: \( vc.sourceIDs)")
+//        print(" vc.sourceIDs: \( vc.sourceIDs)")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

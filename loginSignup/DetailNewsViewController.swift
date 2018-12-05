@@ -19,6 +19,7 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     var article:[ArticleDes] = []
     var sourceID:String = ""
     var sourceIDs:[String] = []
+    var selectedUserSource:User?
     
     struct News: Decodable {
         let status: String?
@@ -47,12 +48,27 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.rowHeight = 300
 //    navigationController?.navigationBar.prefersLargeTitles = true
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu")!)
+        print()
         
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+        
+        let userSource = UserData.shared.userInformation
+        if (userSource?.selectedSource == nil){
+            let sources:[ String] = sourceIDs
+            let allSources = sources.joined(separator: ",")
+            loadData(allSources: allSources)
+            print("sourceIDsInLoadData:\(String(describing: sources))")
+        }
+        else{
+            let source = userSource?.selectedSource
+            let allSources = source?.joined(separator: ",")
+            loadData(allSources: allSources ?? "" )
+            print("sourceIDs:\(String(describing: source))")
+        }
     }
     
     
@@ -75,17 +91,9 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
         cell.backgroundCardView.layer.shadowOpacity = 0.8
         return cell
     }
-    
-    
-    
-    
-    func loadData() {
-        print("sourceIDsInLoadData:\(String(describing: sourceIDs))")
-        let sources:[ String] = sourceIDs
-        let allSources = sources.joined(separator: ",")
-           print("sourceIDsInLoadData:\(String(describing: allSources))")
-//        sourceIDs.joined(separator: ",")
-                print("sourceIDs:\(String(describing: sourceIDs))")
+
+    func loadData(allSources : String ) {
+        
         guard let url = URL(string: "https://newsapi.org/v2/everything?q=bitcoin&apiKey=4b28da7e32c047718042abf68f2f1df0&sources=\(String(describing: allSources))") else { return }
         DispatchQueue.main.async {
             Alamofire.request(url,method: .get, parameters: ["articles": "true"]).validate()

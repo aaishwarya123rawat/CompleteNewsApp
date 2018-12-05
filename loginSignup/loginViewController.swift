@@ -13,8 +13,7 @@ import SlideMenuControllerSwift
 class LoginViewController: UIViewController {
     
     var fetchData = DataSave()
-//    var lo
-    
+
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userimg: UIImageView!
@@ -111,10 +110,8 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
    
-    
 
     @IBAction func signUpUser(_ sender: Any) {
-        
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -134,7 +131,7 @@ class LoginViewController: UIViewController {
         for loadedPerson in userDetail{
             if( email == loadedPerson.emailSignUp) && (password == loadedPerson.passwordSignUp) && (logedInState == true){
                 print("login")
-                print("UserName=\(loadedPerson.nameSignUp)")
+                print("UserName=\(String(describing: loadedPerson.nameSignUp))")
                 
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
 //                UserDefaults.standard.synchronize()
@@ -157,9 +154,14 @@ class LoginViewController: UIViewController {
             }
             else if ( email == loadedPerson.emailSignUp) && (password == loadedPerson.passwordSignUp) && (logedInState == false){
                 print("login:abcd")
+                
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
-//                print("loadedPerson:\(loadedPerson)")
-//                UserDefaults.standard.set(loadedPerson, forKey: "user")
+                print("loadedPerson:\(loadedPerson)")
+
+                UserDefaults.standard.set(email, forKey: "loggedUserEmail")
+                
+                print("savedUser:")
+        
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeViewController = storyboard.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
                 let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuViewController") as! LeftMenuViewController

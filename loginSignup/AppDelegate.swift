@@ -43,12 +43,12 @@ import SlideMenuControllerSwift
         let logedInState = UserDefaults.standard.bool(forKey: "isLoggedIn")
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
+        
         if (logedInState == true) {
-           let userDetails = UserDefaults.standard.data(forKey: "user")
-            print("userDetails:\(String(describing: userDetails))")
+            let loggedUser = UserData.shared.userInfo()
             self.createMenuView()
-        }
+            print("personInfo:\(String(describing: loggedUser))")
+        }  
         else{
             let loginController =  storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
             appDelegate?.window?.rootViewController = loginController

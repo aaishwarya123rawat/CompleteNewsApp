@@ -12,6 +12,7 @@
 		180411A42178A772001C5F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180411A22178A772001C5F0E /* Main.storyboard */; };
 		180411A62178A772001C5F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180411A52178A772001C5F0E /* Assets.xcassets */; };
 		180411A92178A772001C5F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180411A72178A772001C5F0E /* LaunchScreen.storyboard */; };
+		181812F321B654DD00ACDA91 /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181812F221B654DD00ACDA91 /* UserSingleton.swift */; };
 		181B88E52186F9510002329F /* DetailViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181B88E42186F9510002329F /* DetailViewCellTableViewCell.swift */; };
 		182786DA219AA06900B6D56E /* CollectionCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182786D9219AA06900B6D56E /* CollectionCellLayout.swift */; };
 		184FC5A521AD3711003F2D7C /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FC5A421AD3711003F2D7C /* LeftMenuViewController.swift */; };
@@ -20,7 +21,7 @@
 		18824924217DE6F7000E4003 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18824923217DE6F7000E4003 /* HomeViewController.swift */; };
 		18CE397F21804BCA0011EE41 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE397E21804BCA0011EE41 /* loginViewController.swift */; };
 		18CE39812180980A0011EE41 /* DataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE39802180980A0011EE41 /* DataSave.swift */; };
-		18CE398321809A740011EE41 /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE398221809A740011EE41 /* userInfo.swift */; };
+		18CE398321809A740011EE41 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE398221809A740011EE41 /* UserInfo.swift */; };
 		18CE39862181DC360011EE41 /* CellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */; };
 		18CE398821834AFD0011EE41 /* DetailNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE398721834AFD0011EE41 /* DetailNewsViewController.swift */; };
 		79C03D1CFA9B21C5027F3802 /* Pods_loginSignup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 472EF2BF6ED0D53ACD8F3464 /* Pods_loginSignup.framework */; };
@@ -34,6 +35,7 @@
 		180411A52178A772001C5F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180411A82178A772001C5F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180411AA2178A772001C5F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		181812F221B654DD00ACDA91 /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		181B88E42186F9510002329F /* DetailViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		182786D9219AA06900B6D56E /* CollectionCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellLayout.swift; sourceTree = "<group>"; };
 		184FC5A421AD3711003F2D7C /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		18824923217DE6F7000E4003 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18CE397E21804BCA0011EE41 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		18CE39802180980A0011EE41 /* DataSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSave.swift; sourceTree = "<group>"; };
-		18CE398221809A740011EE41 /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
+		18CE398221809A740011EE41 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCollectionViewCell.swift; sourceTree = "<group>"; };
 		18CE398721834AFD0011EE41 /* DetailNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsViewController.swift; sourceTree = "<group>"; };
 		3F0A087B0B5B93BE4342AB35 /* Pods-loginSignup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loginSignup.release.xcconfig"; path = "Pods/Target Support Files/Pods-loginSignup/Pods-loginSignup.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +94,8 @@
 				181B88E42186F9510002329F /* DetailViewCellTableViewCell.swift */,
 				18CE39852181DC360011EE41 /* CellCollectionViewCell.swift */,
 				18CE39802180980A0011EE41 /* DataSave.swift */,
-				18CE398221809A740011EE41 /* userInfo.swift */,
+				181812F221B654DD00ACDA91 /* UserSingleton.swift */,
+				18CE398221809A740011EE41 /* UserInfo.swift */,
 				180411A22178A772001C5F0E /* Main.storyboard */,
 				184FC5A421AD3711003F2D7C /* LeftMenuViewController.swift */,
 				184FC5AC21AE809F003F2D7C /* LeftViewControllerCell.swift */,
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181812F321B654DD00ACDA91 /* UserSingleton.swift in Sources */,
 				18CE398821834AFD0011EE41 /* DetailNewsViewController.swift in Sources */,
 				184FC5A521AD3711003F2D7C /* LeftMenuViewController.swift in Sources */,
 				182786DA219AA06900B6D56E /* CollectionCellLayout.swift in Sources */,
@@ -255,7 +259,7 @@
 				18CE397F21804BCA0011EE41 /* loginViewController.swift in Sources */,
 				181B88E52186F9510002329F /* DetailViewCellTableViewCell.swift in Sources */,
 				18CE39862181DC360011EE41 /* CellCollectionViewCell.swift in Sources */,
-				18CE398321809A740011EE41 /* userInfo.swift in Sources */,
+				18CE398321809A740011EE41 /* UserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,7 +45,7 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            self.tableView.rowHeight = 300
+//            self.tableView.rowHeight = 300
 //    navigationController?.navigationBar.prefersLargeTitles = true
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu")!)
         print()
@@ -55,7 +55,7 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        DataSave().saveSourceForSelectedUser(userSource: sourceIDs)
         let userSource = UserData.shared.userInformation
         if (userSource?.selectedSource == nil){
             let sources:[ String] = sourceIDs
@@ -77,19 +77,46 @@ class DetailNewsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell") as! DetailViewCellTableViewCell
-        let articleDescription = article[indexPath.row]
-        cell.title.text = articleDescription.title
-        cell.titleImage.downloadImage(from: ((articleDescription.urlToImage ?? "")))
-        cell.titleImage.layer.cornerRadius = 10.0
-        cell.backgroundCardView.backgroundColor = UIColor.white
-        cell.backgroundColor = UIColor(red: 238/250.0, green: 238/250.0, blue: 238/250.0, alpha: 1.0)
-        cell.backgroundCardView.layer.cornerRadius = 5.0
-        cell.backgroundCardView.layer.masksToBounds = false
-        cell.backgroundCardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        cell.backgroundCardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        cell.backgroundCardView.layer.shadowOpacity = 0.8
-        return cell
+        let myIndex = (indexPath.row % 5)
+        let returnCell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell") as! DetailViewCellTableViewCell
+        
+        if (myIndex == 0 ){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell") as! DetailViewCellTableViewCell
+            let articleDescription = article[indexPath.row]
+            cell.title.text = articleDescription.title
+            cell.source.text = articleDescription.source?.name
+            cell.titleImage.downloadImage(from: ((articleDescription.urlToImage ?? "")))
+            cell.titleImage.layer.cornerRadius = 5.0
+            cell.backgroundCardView.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor(red: 238/250.0, green: 238/250.0, blue: 238/250.0, alpha: 1.0)
+            cell.backgroundCardView.layer.cornerRadius = 5.0
+            cell.backgroundCardView.layer.masksToBounds = false
+            cell.backgroundCardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
+            cell.backgroundCardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            cell.backgroundCardView.layer.shadowOpacity = 0.8
+            tableView.rowHeight = 340
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "smallCell") as! SmallViewTableViewCell
+            let articleDescription = article[indexPath.row]
+            cell.smallCellTitleLbl.text = articleDescription.title
+            cell.smallCellTitleLbl.text = articleDescription.title
+            cell.smallCellSourceLbl.text = articleDescription.source?.name
+            cell.samallCellImg.downloadImage(from: ((articleDescription.urlToImage ?? "")))
+            cell.samallCellImg.layer.cornerRadius = 5.0
+            cell.samllCellCardViewBgLbl.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor(red: 238/250.0, green: 238/250.0, blue: 238/250.0, alpha: 1.0)
+            cell.samllCellCardViewBgLbl.layer.cornerRadius = 5.0
+            cell.samllCellCardViewBgLbl.layer.masksToBounds = false
+            cell.samllCellCardViewBgLbl.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
+            cell.samllCellCardViewBgLbl.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+            cell.samllCellCardViewBgLbl.layer.shadowOpacity = 0.8
+            tableView.rowHeight = 150
+            return cell
+            
+        }
+        return returnCell
     }
 
     func loadData(allSources : String ) {

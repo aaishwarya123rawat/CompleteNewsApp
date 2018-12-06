@@ -13,19 +13,6 @@ class CellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var firstNameOfTitleImage: UIImageView!
     @IBOutlet var checkImg: UIImageView!
     
-    
-    
-    
-//    func toggleSelected()  {
-//
-//        if self.isSelected {
-//            self.checkImg.isHidden = false
-//        }
-//        else{
-//            self.checkImg.isHidden = true
-//
-//        }
-//    }
 }
 
 

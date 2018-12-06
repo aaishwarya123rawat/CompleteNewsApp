@@ -12,8 +12,8 @@ class DetailViewCellTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var titledescription: UILabel!
-    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var source: UILabel!
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var backgroundCardView: UIView!
     

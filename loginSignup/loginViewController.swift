@@ -176,6 +176,7 @@ class LoginViewController: UIViewController {
                 
                 self.view.window?.rootViewController = slideMenuController
                 self.view.window?.makeKeyAndVisible()
+                
                 break
             }
         }

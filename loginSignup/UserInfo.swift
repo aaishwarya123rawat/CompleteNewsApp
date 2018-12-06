@@ -14,8 +14,4 @@ struct User: Codable {
     let passwordSignUp:String?
     let nameSignUp:String?
     var selectedSource:[String]?
-    
-    
-//    let isLoggedIn:Bool
-//    let ageSignUp:String
 }

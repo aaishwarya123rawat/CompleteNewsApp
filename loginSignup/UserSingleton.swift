@@ -13,8 +13,7 @@ class UserData {
     static let shared = UserData()
     var userInformation:User?
     private init(){}
-    
-    
+
     func userInfo() -> User?  {
         let userEmail =  UserDefaults.standard.string(forKey: "loggedUserEmail")
         for personInfo in DataSave().getData(){

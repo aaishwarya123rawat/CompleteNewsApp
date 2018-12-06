@@ -11,18 +11,15 @@ import Foundation
 class DataSave {
     
     func saveData(user: User)   {
+        
         let users = [user]
         var userlist = getData()
         let encoder = JSONEncoder()
-        for oldUser in userlist{
+        for (index,oldUser) in userlist.enumerated() {
             if (user.emailSignUp == oldUser.emailSignUp){
-                
-                
-                
-                
                 let encoded = try? encoder.encode(users)
                 UserDefaults.standard.set(encoded, forKey: "savedUsers");
-                userlist.remove(at: 2)
+                userlist.remove(at: index)
                 UserDefaults.standard.synchronize()
                 break
             }
@@ -37,7 +34,7 @@ class DataSave {
         }
     }
     
-    
+
     func saveSourceForSelectedUser(userSource: [String] ) {
       var usr = UserData.shared.userInformation
         usr?.selectedSource = userSource
@@ -57,3 +54,4 @@ class DataSave {
         return [User]()
     }
 }
+

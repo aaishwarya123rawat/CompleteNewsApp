@@ -21,7 +21,7 @@ import SlideMenuControllerSwift
         
         let navController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController") as! UINavigationController
           appDelegate?.window?.rootViewController = navController
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
         let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenuViewController") as! LeftMenuViewController
 
@@ -52,7 +52,6 @@ import SlideMenuControllerSwift
         else{
             let loginController =  storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
             appDelegate?.window?.rootViewController = loginController
-            //self.createMenuView()
         }
    
     

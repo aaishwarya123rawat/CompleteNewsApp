@@ -19,7 +19,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var allSelectedSource:[String] = []
     var index = [Int]()
     var saveData = DataSave()
- 
+    var activityIndicator = ActivityIndicator()
+
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var LogoutButtonLayout: UIButton!
@@ -51,10 +52,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //activityIndicator.showActivityIndicatory(uiView: self.view)
+        loadSources()
         collectionCellLayout = CollectionCellLayout(numberOfColumn: 3)
         collectionView.collectionViewLayout =  collectionCellLayout
         collectionView.reloadData()
-        loadSources()
+       
+      
 
     }
     
@@ -115,6 +119,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return UIColor.white
     }
 
+    
+   
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailNewsViewController") as! DetailNewsViewController
         
@@ -134,9 +141,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             
         }
-        DataSave().saveSourceForSelectedUser(userSource: allSelectedSource)
         vc.sourceIDs = allSelectedSource
-//        print(" vc.sourceIDs: \( vc.sourceIDs)")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -151,7 +156,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func loadSources() {
         guard let url = URL(string: "https://newsapi.org/v2/sources?apiKey=4b28da7e32c047718042abf68f2f1df0") else { return }
+        weak var weakSelf = self
         DispatchQueue.main.async {
+            weakSelf?.activityIndicator.showLoader(view: self.view)
             Alamofire.request(url,method: .get, parameters: ["sources": "true"]).validate()
                 .responseJSON{ responce in guard responce.result.isSuccess else{
                     print("error")
@@ -160,7 +167,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     switch responce.result{
                     case .success(_):
                         let json = responce.result.value
-//                        print(json as Any)
+                        
+                        
                         
                         for aSource in (json as! [String:Any])["sources"] as! [Any]   {
                         do {
@@ -173,6 +181,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                            print(self.source)
                             self.collectionView.reloadData()
                         }
+                            
                         catch {
                             print(error)
                         }
@@ -181,10 +190,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
+                    weakSelf?.activityIndicator.dismissLoader()
             }.resume()
+          
         }
     }
 }
+
 
 
 extension HomeViewController : SlideMenuControllerDelegate {
